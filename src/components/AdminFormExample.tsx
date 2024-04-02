@@ -1,20 +1,15 @@
 "use client";
 
-import { FormEvent } from "react";
+interface AdminFormExampleProp {
+  apiCall: (formData: FormData) => void;
+}
 
-const AdminFormExample: React.FunctionComponent = () => {
-  const makeApiCall = async (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const formData = new FormData(event.currentTarget);
-    await fetch("/api/hotel", {
-      method: "POST",
-      body: JSON.stringify(formData),
-    });
-  };
-
+const AdminFormExample: React.FunctionComponent<AdminFormExampleProp> = (
+  prop: AdminFormExampleProp,
+) => {
   return (
     <div>
-      <form onSubmit={makeApiCall} method="POST">
+      <form action={prop.apiCall}>
         <label htmlFor="hotelName">Hotel Name:</label>
         <input type="text" name="hotelName" placeholder="Hotel Name" />
         <button type="submit">Submit</button>

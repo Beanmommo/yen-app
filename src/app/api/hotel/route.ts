@@ -1,8 +1,5 @@
-import { NextApiRequest } from "next";
-import { NextResponse } from "next/server";
-
-export async function Get(request: NextApiRequest) {
-  return new NextResponse("hotel");
+export async function GET(request: Request) {
+  return new Response("hotel");
 }
 
 export async function POST(request: Request) {
