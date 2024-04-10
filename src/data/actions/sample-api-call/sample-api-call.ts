@@ -8,7 +8,8 @@ const schemaRegister = z.object({
   }),
 });
 
-export async function sampleCall(prevState: any, formData: FormData) {
+export async function sampleCall(prevState: any, formData: FormData)
+{
   console.log("Initiationg sample call");
 
   const field = {
@@ -18,7 +19,8 @@ export async function sampleCall(prevState: any, formData: FormData) {
   console.log(validateHotelField(field));
   const validatedFields = schemaRegister.safeParse(field);
 
-  if (!validatedFields.success) {
+  if (!validatedFields.success)
+  {
     return {
       ...prevState,
       zodErrors: validatedFields.error.flatten().fieldErrors,
