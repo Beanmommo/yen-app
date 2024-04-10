@@ -10,7 +10,7 @@ const InputText: React.FunctionComponent<InputTextProp> = (
 ) => {
   return (
     <div className=" grid grid-flow-row ">
-      <label htmlFor={prop.name} className=" uppercase text-[#666666] pb-5">
+      <label htmlFor={prop.id} className=" uppercase text-[#666666] pb-5">
         {prop.inputTitle}
       </label>
       <input

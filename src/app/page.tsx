@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <main>
       <ClientHeader />
-      <AdminFormExample apiCall={apiCall} />
+      <AdminFormExample />
     </main>
   );
 }
