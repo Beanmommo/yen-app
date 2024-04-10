@@ -4,6 +4,7 @@ import { useFormState } from "react-dom";
 import InputText from "./InputText";
 import { sampleCall } from "@/data/actions/sample-api-call/sample-api-call";
 import { ZodErrors } from "./custom/ZodErrors";
+import AdminButton from "./custom/AdminButton";
 
 interface AdminFormExampleProp {
   apiCall: (formData: FormData) => void;
@@ -23,9 +24,13 @@ const AdminFormExample: React.FunctionComponent<AdminFormExampleProp> = (
   return (
     <div>
       <form action={formAction}>
-        <InputText name="hotelName" placeholder="Hotel Name" />
+        <InputText
+          inputTitle="Hotel Name"
+          name="hotelName"
+          placeholder="Enter Hotel Name"
+        />
         <ZodErrors error={formState?.zodErrors?.hotelName} />
-        <button type="submit">Submit</button>
+        <AdminButton buttonTitle="Submit" type="submit" />
       </form>
     </div>
   );
