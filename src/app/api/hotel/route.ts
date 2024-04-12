@@ -6,6 +6,9 @@ export async function GET(request: Request)
 export async function POST(request: Request)
 {
   const body = await request.json();
-  console.log(body);
+  setTimeout(async () =>
+  {
+    console.log("Hotel Successfully added to database")
+  }, 2000);
   return new Response("OK");
 }
