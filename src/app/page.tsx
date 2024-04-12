@@ -6,8 +6,9 @@ import Image from "next/image";
 export default function Home() {
   return (
     <main>
-      <ClientHeader />
-      <AdminFormExample />
+      {/* <ClientHeader /> */}
+      {/* <AdminFormExample /> */}
+      <div>Hello world</div>
     </main>
   );
 }
