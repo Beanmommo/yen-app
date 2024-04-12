@@ -6,6 +6,7 @@ import { sampleCall } from "@/data/actions/sample-api-call/sample-api-call";
 import { ZodErrors } from "./custom/ZodErrors";
 import AdminButton from "./custom/AdminButton";
 import { HotelField, HotelSchemaRegister } from "@/data/schema/hotelValidation";
+import { useState } from "react";
 
 interface AdminFormExampleProp {}
 
@@ -16,8 +17,11 @@ const INITIAL_STATE = {
   submitDisabled: true,
 };
 
-//Handle form validation and API call
-async function handleValidation(prevState: any, formData: FormData) {
+const FIELD_STATE = {
+  hotelName: "",
+};
+
+function handleValidation(prevState: any, formData: FormData) {
   const field: HotelField = {
     hotelName: (formData.get("hotelName") as string).toLowerCase(),
   };
@@ -50,25 +54,36 @@ const AdminFormExample: React.FunctionComponent<AdminFormExampleProp> = (
     handleValidation,
     INITIAL_STATE,
   );
+  const [submitState, submitAction] = useFormState(handleSubmit, FIELD_STATE);
+  const [isLoading, setIsLoading] = useState(false);
+
+  async function handleSubmit(prevState: HotelField, formData: FormData) {
+    setIsLoading(true);
+    const field = {
+      ...prevState,
+      hotelName: (formData.get("hotelName") as string).toLowerCase(),
+    };
+
+    try {
+      const response = await sampleCall(field);
+    } catch (error) {
+    } finally {
+      setIsLoading(false);
+    }
+    return field;
+    // const result = await sampleCall(field);
+    // console.log(result);
+  }
 
   function handleOnChange(targetForm: HTMLFormElement) {
     const formData = new FormData(targetForm);
     formValidateAction(formData);
   }
 
-  async function handleOnSubmit(targetForm: HTMLFormElement) {
-    const formData = new FormData(targetForm);
-    const field: HotelField = {
-      hotelName: (formData.get("hotelName") as string).toLowerCase(),
-    };
-    console.log(field);
-    const result = await sampleCall(field);
-  }
-
   return (
     <div>
       <form
-        onSubmit={(e) => handleOnSubmit(e.currentTarget)}
+        action={submitAction}
         onChange={(e) => handleOnChange(e.currentTarget)}
       >
         <InputText
@@ -77,11 +92,9 @@ const AdminFormExample: React.FunctionComponent<AdminFormExampleProp> = (
           placeholder="Enter Hotel Name"
         />
         <ZodErrors error={formState?.zodErrors?.hotelName} />
-        <AdminButton
-          buttonTitle="Submit"
-          type="submit"
-          disabled={formState.submitDisabled}
-        />
+        <AdminButton type="submit" disabled={formState.submitDisabled}>
+          {isLoading ? "Submitting..." : "Submit"}
+        </AdminButton>
       </form>
     </div>
   );
