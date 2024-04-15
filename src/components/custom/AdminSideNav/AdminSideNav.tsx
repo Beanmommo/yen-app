@@ -9,7 +9,7 @@ const AdminSideNav: React.FunctionComponent<AdminSideNavProp> = (
   prop: AdminSideNavProp,
 ) => {
   return (
-    <ul>
+    <ul className=" border-t border-x border-[#DDDDDD]">
       {prop.route.map((item) => {
         return (
           <React.Fragment key={item.name}>

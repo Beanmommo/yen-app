@@ -17,6 +17,10 @@ const routes = {
       name: "Dashboard",
       link: "/dashboard",
     },
+    {
+      name: "Hotel Detail",
+      link: "/hotelDetail",
+    },
   ],
 };
 
@@ -29,9 +33,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${montserrat.className} bg-[#FAFAFA]`}>
         <AdminHeader />
-        <div className=" grid grid-flow-col max-w-7xl mx-auto px-8">
+        <div className=" grid grid-flow-col grid-cols-3 max-w-7xl mx-auto px-8 gap-7 mt-16">
           <AdminSideNav route={routes.route} />
-          {children}
+          <div className=" col-span-2">{children}</div>
         </div>
       </body>
     </html>
