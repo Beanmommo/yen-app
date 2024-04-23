@@ -16,8 +16,8 @@ const routes = {
       link: "/admin/dashboard",
     },
     {
-      name: "Hotel Detail",
-      link: "/admin/hotelDetail",
+      name: "Hotel List",
+      link: "/admin/hotelList",
     },
   ],
 };

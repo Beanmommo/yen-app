@@ -1,11 +1,12 @@
 "use client";
 
 import { setHotel } from "@/lib/action";
+import PageHeading from "@/ui/PageHeading";
 
 export default function Page() {
   return (
     <div>
-      <h1>Dashboard</h1>
+      <PageHeading headingTitle="Dashboard" />
       <button onClick={setHotel}>Click me lmao</button>
     </div>
   );

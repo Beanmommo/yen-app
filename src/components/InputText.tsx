@@ -1,5 +1,4 @@
 import { InputHTMLAttributes } from "react";
-import { ZodErrors } from "./custom/ZodErrors";
 
 interface InputTextProp extends InputHTMLAttributes<HTMLInputElement> {
   inputTitle: string;
