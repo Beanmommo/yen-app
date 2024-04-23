@@ -43,3 +43,18 @@ export type HotelRoom = {
     price_currency: currencyEnum;
   };
 };
+
+export type HotelGeneralAmnities = {
+  id: string;
+  hotel_id: string;
+  category_name: string;
+  category_amnities: string;
+};
+
+export type HotelChargeableAmnities = {
+  id: string;
+  hotel_id: string;
+  amnity_name: string;
+  amnity_price: number;
+  amnity_unit: string;
+};
