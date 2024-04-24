@@ -33,6 +33,7 @@ export async function POST(req: Request) {
   }
 
   return NextResponse.json({
+    id: hotelData.id,
     message: "hotel created very nice",
   });
 }
