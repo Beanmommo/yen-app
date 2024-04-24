@@ -2,7 +2,7 @@ export type Hotel = {
   id: string;
   hotel_name: string;
   hotel_address: string;
-  hotel_about: string;
+  hotel_about: string | null;
   cover_image_url: string | null;
   hotel_images_url: [string] | null;
 };

@@ -24,9 +24,15 @@ export async function GET(req: Request) {
 
 export async function POST(req: Request) {
   const hotelData: Hotel = await req.json();
-  console.log(hotelData);
+  hotelData.id = randomUUID();
+
+  try {
+    set(ref(db, "hotel/" + hotelData.id), hotelData);
+  } catch (error) {
+    throw new Error(`Database Error: ${error}, failed to add hotel`);
+  }
 
   return NextResponse.json({
-    message: "Very nice",
+    message: "hotel created very nice",
   });
 }
