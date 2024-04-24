@@ -1,10 +1,10 @@
 export type Hotel = {
   id: string;
   hotel_name: string;
-  hote_address: string;
+  hotel_address: string;
   hotel_about: string;
-  cover_image_url: string;
-  hotel_images_url: [string];
+  cover_image_url: string | null;
+  hotel_images_url: [string] | null;
 };
 
 enum beddingEnum {

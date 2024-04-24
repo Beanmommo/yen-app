@@ -3,17 +3,56 @@
 import { useFormState } from "react-dom";
 import Input from "../Input";
 import Button from "../Button";
+import { z } from "zod";
 
-const INITIAL_STATE = {
-  data: null,
-  zodError: null,
-  message: null,
-  submitDisabled: true,
+import { addHotel } from "@/lib/action";
+
+export type AddHotelFormData = {
+  hotel_name: string;
+  hotel_address: string;
 };
 
-function handleSubmit(prevState: any, formData: FormData) {
-  console.log("test submit");
-  return prevState;
+type AddHotelFormState = {
+  errors?: {
+    hotel_name?: string[];
+    hotel_address?: string[];
+  };
+  message?: string | null;
+};
+export const AddHotelFormSchema = z.object({
+  id: z.string(),
+  hotel_name: z
+    .string({
+      invalid_type_error: "Please enter hotel name",
+    })
+    .min(5, "Hotel Name must exceed 5 characters"),
+  hotel_address: z
+    .string({
+      invalid_type_error: "Please enter hotel address",
+    })
+    .min(5, "Hotel Address must exceed 5 characters"),
+});
+
+const INITIAL_STATE: AddHotelFormState = {};
+
+async function handleSubmit(prevState: any, formData: FormData) {
+  const CreateHotel = AddHotelFormSchema.omit({ id: true });
+  const validatedFields = CreateHotel.safeParse({
+    hotel_name: formData.get("hotel_name")?.toString(),
+    hotel_address: formData.get("hotel_address")?.toString(),
+  });
+
+  if (!validatedFields.success) {
+    console.log(validatedFields.error.flatten().fieldErrors);
+    return {
+      ...prevState,
+      errors: validatedFields.error.flatten().fieldErrors,
+      message: "Invalid Input: failed to add hotel",
+    };
+  }
+
+  // Add Hotel to firebase
+  await addHotel(validatedFields.data);
 }
 
 export default function AddHotelForm() {
