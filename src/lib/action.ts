@@ -1,16 +1,6 @@
 import { Hotel } from "./definitions";
 import { AddHotelFormData } from "@/ui/hotel/AddHotelForm";
 
-export async function setHotel() {
-  const res = await fetch("/api/addHotel");
-
-  //   if (!res.ok) {
-  //     throw new Error("Failed to set Hotel");
-  //   }
-  //   return res.json;
-  console.log("Set Hotel..");
-}
-
 export async function addHotel(hotelFormData: AddHotelFormData) {
   const data: Hotel = {
     id: "",
@@ -27,4 +17,15 @@ export async function addHotel(hotelFormData: AddHotelFormData) {
       body: JSON.stringify(data),
     });
   } catch (error) {}
+}
+
+export async function getHotel() {
+  const res = await fetch(process.env.LOCAL_URL + "/api/getHotel", {
+    method: "GET",
+  });
+
+  if (!res.ok) {
+    throw new Error("Database Error: failed to get Hotel");
+  }
+  return res.json();
 }
