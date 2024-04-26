@@ -4,7 +4,7 @@ import { Button } from "@nextui-org/button";
 export default function Page() {
   return (
     <div>
-      <Button >Click me</Button>
+      <Button color="primary">Click me</Button>
     </div>
   );
 }
