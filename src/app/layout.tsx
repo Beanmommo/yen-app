@@ -1,13 +1,16 @@
-import { NextUIProvider } from "@nextui-org/react";
+import { Providers } from "./providers";
+import '@/app/globals.css'
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <NextUIProvider>
-      <html>{children}</html>
-    </NextUIProvider>
+    <html lang="en">
+      <body>
+        <Providers>{children}</Providers>
+      </body>
+    </html>
   );
 }

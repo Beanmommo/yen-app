@@ -28,12 +28,14 @@ export default function AdminLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <body className={`${montserrat.className} bg-[#FAFAFA]`}>
-      <Header />
+    <>
+    <Header />
       <div className=" grid grid-flow-col grid-cols-3 max-w-7xl mx-auto px-8 gap-7 mt-16">
         <SideNav route={routes.route} />
         <div className=" col-span-2">{children}</div>
       </div>
-    </body>
+    </>
+      
+    
   );
 }
