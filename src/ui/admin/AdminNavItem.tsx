@@ -54,7 +54,16 @@ export default function AdminNavItem({
 
   return (
     <NavbarItem>
-      <Link href={navigationData.link}>{navigationData.label}</Link>
+      <Button
+        disableRipple
+        className="p-0 bg-transparent data-[hover=true]:bg-transparent"
+        radius="sm"
+        variant="light"
+        as={Link}
+        href={navigationData.link}
+      >
+        {navigationData.label}
+      </Button>
     </NavbarItem>
   );
 }

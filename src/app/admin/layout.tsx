@@ -1,19 +1,5 @@
 import "../globals.css";
-
 import AdminNavBar from "@/ui/admin/AdminNavBar";
-
-const routes = {
-  route: [
-    {
-      name: "Dashboard",
-      link: "/admin/dashboard",
-    },
-    {
-      name: "Hotel List",
-      link: "/admin/hotelList",
-    },
-  ],
-};
 
 export default function AdminLayout({
   children,

@@ -12,13 +12,14 @@ import { useState } from "react";
 import AdminNavItem, { NavigationData } from "./AdminNavItem";
 import { Link } from "@nextui-org/link";
 import { Button } from "@nextui-org/button";
+import { NAV_ROUTE } from "@/app/admin/const";
 
 export default function AdminNavBar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigationData: NavigationData[] = [
     {
       label: "Home",
-      link: "/admin/dashboard",
+      link: NAV_ROUTE.DASHBOARD,
     },
     {
       label: "Manage",
@@ -26,15 +27,15 @@ export default function AdminNavBar() {
       items: [
         {
           title: "Hotel",
-          link: "#",
+          link: NAV_ROUTE.HOTEL.HOME,
         },
         {
           title: "Room Promo",
-          link: "#",
+          link: NAV_ROUTE.PROMO.HOME,
         },
         {
           title: "Banner",
-          link: "#",
+          link: NAV_ROUTE.BANNER.HOME,
         },
       ],
     },
@@ -44,21 +45,21 @@ export default function AdminNavBar() {
       items: [
         {
           title: "Booking",
-          link: "#",
+          link: NAV_ROUTE.BOOKING.HOME,
         },
         {
           title: "Invoice",
-          link: "#",
+          link: NAV_ROUTE.INVOICE.HOME,
         },
         {
           title: "Report",
-          link: "#",
+          link: NAV_ROUTE.REPORT.HOME,
         },
       ],
     },
     {
       label: "Setting",
-      link: "#",
+      link: NAV_ROUTE.SETTING.HOME,
     },
   ];
   return (
@@ -74,7 +75,7 @@ export default function AdminNavBar() {
             className="sm:hidden "
           ></NavbarMenuToggle>
           <NavbarBrand>
-            <p className="font-bold text-inherit">ACME</p>
+            <p className="font-bold text-inherit">Malamini</p>
           </NavbarBrand>
         </NavbarContent>
 
