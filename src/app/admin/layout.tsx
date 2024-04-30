@@ -1,13 +1,6 @@
-import type { Metadata } from "next";
 import "../globals.css";
-import Header from "@/ui/admin/Header";
-import SideNav from "@/ui/admin/SideNav";
-import { montserrat } from "../fonts";
 
-export const metadata: Metadata = {
-  title: "Malamini",
-  description: "Karena besok malam belum tentu sama",
-};
+import AdminNavBar from "@/ui/admin/AdminNavBar";
 
 const routes = {
   route: [
@@ -28,14 +21,10 @@ export default function AdminLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <>
-    <Header />
-      <div className=" grid grid-flow-col grid-cols-3 max-w-7xl mx-auto px-8 gap-7 mt-16">
-        <SideNav route={routes.route} />
-        <div className=" col-span-2">{children}</div>
-      </div>
-    </>
-      
-    
+    <main>
+      <AdminNavBar />
+
+      <div>{children}</div>
+    </main>
   );
 }
