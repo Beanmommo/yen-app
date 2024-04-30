@@ -1,11 +1,12 @@
 "use client";
 
 import { useFormState } from "react-dom";
-import Input from "../Input";
-import Button from "../Button";
+
 import { z } from "zod";
 
 import { addHotel } from "@/lib/action";
+import { Button } from "@nextui-org/button";
+import Input from "../Input";
 
 export type AddHotelFormData = {
   hotel_name: string;
