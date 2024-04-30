@@ -67,7 +67,7 @@ export default function AdminNavBar() {
       <Navbar
         onMenuOpenChange={setIsMenuOpen}
         shouldHideOnScroll
-        maxWidth={`full`}
+        maxWidth={"2xl"}
       >
         <NavbarContent>
           <NavbarMenuToggle

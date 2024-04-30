@@ -9,7 +9,9 @@ export default function AdminLayout({
   return (
     <main>
       <AdminNavBar />
-      <div>{children}</div>
+      <div className=" mx-6 grid grid-cols-1 justify-items-center ">
+        <div className=" max-w-5xl w-full">{children}</div>
+      </div>
     </main>
   );
 }
