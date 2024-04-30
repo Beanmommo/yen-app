@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@nextui-org/button": "^2.0.31",
+    "@nextui-org/dropdown": "^2.1.23",
     "@nextui-org/link": "^2.0.29",
     "@nextui-org/navbar": "^2.0.30",
     "@nextui-org/react": "^2.3.6",
@@ -26,6 +27,7 @@
     "zod": "^3.22.4"
   },
   "devDependencies": {
+    "@iconify/react": "^4.1.1",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
