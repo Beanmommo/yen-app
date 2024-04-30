@@ -1,5 +1,5 @@
 "use client";
-import { Link } from "@nextui-org/link";
+
 import {
   Navbar,
   NavbarBrand,
@@ -7,16 +7,13 @@ import {
   NavbarItem,
   NavbarMenuToggle,
 } from "@nextui-org/navbar";
-import { DropdownSection } from "@nextui-org/react";
-import { link } from "fs";
+
 import { useState } from "react";
 import AdminNavItem, { NavigationData } from "./AdminNavItem";
+import { Link } from "@nextui-org/link";
+import { Button } from "@nextui-org/button";
 
-export default function AdminNavBar({
-  wrapperClass,
-}: {
-  wrapperClass?: string;
-}) {
+export default function AdminNavBar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigationData: NavigationData[] = [
     {
@@ -65,22 +62,37 @@ export default function AdminNavBar({
     },
   ];
   return (
-    <div className={wrapperClass}>
-      <Navbar onMenuOpenChange={setIsMenuOpen} shouldHideOnScroll>
-        <NavbarBrand>
-          <p className=" font-bold text-primary-800">Malamini</p>
-        </NavbarBrand>
-        <NavbarContent className=" sm:hidden">
+    <div>
+      <Navbar
+        onMenuOpenChange={setIsMenuOpen}
+        shouldHideOnScroll
+        maxWidth={`full`}
+      >
+        <NavbarContent>
           <NavbarMenuToggle
             aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-            className="sm:hidden"
+            className="sm:hidden "
           ></NavbarMenuToggle>
+          <NavbarBrand>
+            <p className="font-bold text-inherit">ACME</p>
+          </NavbarBrand>
         </NavbarContent>
 
-        <NavbarContent className=" hidden sm:flex gap-4 " justify="center">
+        <NavbarContent className=" hidden sm:flex gap-4" justify="center">
           {navigationData.map((navigation) => (
             <AdminNavItem key={navigation.label} navigationData={navigation} />
           ))}
+        </NavbarContent>
+
+        <NavbarContent justify="end">
+          <NavbarItem className="hidden lg:flex">
+            <Link href="#">Login</Link>
+          </NavbarItem>
+          <NavbarItem>
+            <Button as={Link} color="primary" href="#" variant="flat">
+              Sign Up
+            </Button>
+          </NavbarItem>
         </NavbarContent>
       </Navbar>
     </div>

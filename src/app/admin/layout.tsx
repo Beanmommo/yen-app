@@ -23,7 +23,6 @@ export default function AdminLayout({
   return (
     <main>
       <AdminNavBar />
-
       <div>{children}</div>
     </main>
   );
