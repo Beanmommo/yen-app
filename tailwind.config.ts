@@ -11,7 +11,11 @@ const config: Config = {
     "./node_modules/@nextui-org/theme/dist/components/(button|link|navbar|ripple|spinner).js",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        "malamini-primary": "#0013BA",
+      },
+    },
   },
   darkMode: "class",
   plugins: [nextui()],

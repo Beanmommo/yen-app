@@ -1,5 +1,8 @@
 import { Hotel } from "./definitions";
 import { AddHotelFormData } from "@/ui/hotel/AddHotelForm";
+import useSWR from "swr";
+
+const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 export async function addHotel(hotelFormData: AddHotelFormData) {
   const data: Hotel = {
@@ -28,4 +31,13 @@ export async function getHotel() {
     throw new Error("Database Error: failed to get Hotel");
   }
   return res.json();
+}
+
+export function useHotel() {
+  const { data, error, isLoading } = useSWR(
+    "http://localhost:3000/api/getHotel",
+    fetcher,
+  );
+
+  return [data, error, isLoading];
 }

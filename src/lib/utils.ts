@@ -5,3 +5,7 @@ export function dictArrToArr(dict: { [index: string]: any }) {
   }
   return array;
 }
+
+/* Example Input
+hotelSnapshot: {"id1": {...hotel props}, "id2": {...hotel props}}
+*/
