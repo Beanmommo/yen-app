@@ -1,6 +1,6 @@
 "use client";
 import { getHotel, useHotel } from "@/lib/action";
-import { dictArrToArr } from "@/lib/utils";
+import { dataToTableData, dictArrToArr } from "@/lib/utils";
 import {
   Table,
   TableBody,
@@ -17,15 +17,14 @@ export default function TableList() {
   const rows = dataToTableData(hotelData, ["hotel_address", "hotel_name"]);
   const columns = [
     {
-      key: "hotel_address",
-      label: "HOTEL ADDRESS",
-    },
-    {
       key: "hotel_name",
       label: "HOTEL",
     },
+    {
+      key: "hotel_address",
+      label: "HOTEL ADDRESS",
+    },
   ];
-  //const row = dataToTableData(hotelArray, ["hotel_address", "hotel_name"]);
 
   return (
     <Table aria-label="Hotel List Table">
@@ -45,21 +44,4 @@ export default function TableList() {
       </TableBody>
     </Table>
   );
-}
-
-function dataToTableData(data: { [index: string]: any }, keys: string[]) {
-  let tableData = [];
-  let count = 0;
-  for (let id in data) {
-    count++;
-    const dict = data[id];
-    var extractData: { [key: string]: string } = {};
-    extractData.key = count.toString();
-    extractData.id = id;
-    for (let index in keys) {
-      extractData[keys[index].toString()] = dict[keys[index]].toString();
-    }
-    tableData.push(extractData);
-  }
-  return tableData;
 }

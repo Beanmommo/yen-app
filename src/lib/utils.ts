@@ -6,6 +6,23 @@ export function dictArrToArr(dict: { [index: string]: any }) {
   return array;
 }
 
-/* Example Input
-hotelSnapshot: {"id1": {...hotel props}, "id2": {...hotel props}}
-*/
+// format data array to table data, adding key prop
+export function dataToTableData(
+  data: { [index: string]: any },
+  keys: string[],
+) {
+  let tableData = [];
+  let count = 0;
+  for (let id in data) {
+    count++;
+    const dict = data[id];
+    var extractData: { [key: string]: string } = {};
+    extractData.key = count.toString();
+    extractData.id = id;
+    for (let index in keys) {
+      extractData[keys[index].toString()] = dict[keys[index]].toString();
+    }
+    tableData.push(extractData);
+  }
+  return tableData;
+}
