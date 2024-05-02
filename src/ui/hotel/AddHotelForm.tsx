@@ -34,11 +34,11 @@ export const AddHotelFormSchema = z.object({
     .min(5, "Hotel Address must exceed 5 characters"),
 });
 
-const INITIAL_STATE: AddHotelFormState = {};
+const INITIAL_STATE: { [index: string]: any } = {};
 
 async function handleSubmit(prevState: any, formData: FormData) {
-  const CreateHotel = AddHotelFormSchema.omit({ id: true });
-  const validatedFields = CreateHotel.safeParse({
+  const createHotel = AddHotelFormSchema.omit({ id: true });
+  const validatedFields = createHotel.safeParse({
     hotel_name: formData.get("hotel_name")?.toString(),
     hotel_address: formData.get("hotel_address")?.toString(),
   });
