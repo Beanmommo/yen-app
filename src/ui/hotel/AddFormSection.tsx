@@ -3,11 +3,15 @@ import { NAV_ROUTE } from "@/app/admin/const";
 import { Button } from "@nextui-org/button";
 import { Input } from "@nextui-org/input";
 import { Link } from "@nextui-org/link";
-import { useForm } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { valibotResolver } from "@hookform/resolvers/valibot";
 import * as v from "valibot";
 
-type AddHotelForm = {
+import { postHotel } from "@/lib/action";
+import { revalidatePath } from "next/cache";
+import { redirect, useRouter } from "next/navigation";
+
+export type AddHotelForm = {
   hotel_name: string;
   hotel_address: string;
 };
@@ -20,36 +24,22 @@ const AddHotelSchema = v.object({
   ]),
 });
 
-function handleSubmit(prevState: any, formData: FormData) {
-  const field = {
-    hotel_name: formData.get("hotel_name")?.toString(),
-    hotel_address: formData.get("hotel_address")?.toString(),
-  };
-
-  const validatedResult = v.safeParse(AddHotelSchema, field);
-
-  if (validatedResult.success) {
-    const hotelData = validatedResult.output;
-  } else {
-    prevState = {
-      ...prevState,
-      v_errors: v.flatten<typeof AddHotelSchema>(validatedResult.issues).nested,
-    };
-  }
-  return prevState;
-}
-
 export default function AddFormSection() {
   const {
     register,
-    formState: { isValid, errors },
+    formState: { isValid, errors, isSubmitting },
     handleSubmit,
   } = useForm<AddHotelForm>({
     mode: "onBlur",
     resolver: valibotResolver(AddHotelSchema),
   });
+  const router = useRouter();
+  const onSubmit: SubmitHandler<AddHotelForm> = async (data) => {
+    await postHotel(data);
+    router.push(NAV_ROUTE.HOTEL.HOME);
+  };
   return (
-    <form onSubmit={(d) => console.log(d)}>
+    <form onSubmit={handleSubmit(onSubmit)}>
       <Input
         type="text"
         label="HOTEL NAME"
@@ -83,7 +73,8 @@ export default function AddFormSection() {
           className="my-4"
           color="primary"
           type="submit"
-          isDisabled={!isValid}
+          isDisabled={!isValid && !isSubmitting}
+          isLoading={isSubmitting}
         >
           Add Hotel
         </Button>
