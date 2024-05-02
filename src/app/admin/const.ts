@@ -9,7 +9,7 @@ export const NAV_ROUTE = {
     HOME: `${ADMIN_ROOT}/booking-home`,
   },
   HOTEL: {
-    HOME: `${ADMIN_ROOT}/hotel-list`,
+    HOME: `${ADMIN_ROOT}/hotel-dashboard`,
     ADD: `${ADMIN_ROOT}/hotel-add`,
   },
   INVOICE: {
