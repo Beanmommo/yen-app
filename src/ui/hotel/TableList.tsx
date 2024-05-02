@@ -1,5 +1,5 @@
 "use client";
-import { getHotel, useHotel } from "@/lib/action";
+import { useHotel } from "@/lib/action";
 import { dataToTableData, dictArrToArr } from "@/lib/utils";
 import {
   Table,

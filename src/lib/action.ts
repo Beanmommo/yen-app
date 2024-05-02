@@ -1,10 +1,11 @@
+import { AddHotelForm } from "@/ui/hotel/AddFormSection";
 import { Hotel } from "./definitions";
-import { AddHotelFormData } from "@/ui/hotel/AddHotelForm";
+
 import useSWR from "swr";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
-export async function addHotel(hotelFormData: AddHotelFormData) {
+export async function postHotel(hotelFormData: AddHotelForm) {
   const data: Hotel = {
     id: "",
     hotel_name: hotelFormData.hotel_name,

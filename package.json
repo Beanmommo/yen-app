@@ -9,9 +9,11 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@hookform/resolvers": "^3.3.4",
     "@nextui-org/button": "^2.0.31",
     "@nextui-org/divider": "^2.0.27",
     "@nextui-org/dropdown": "^2.1.23",
+    "@nextui-org/input": "^2.1.21",
     "@nextui-org/link": "^2.0.29",
     "@nextui-org/navbar": "^2.0.30",
     "@nextui-org/react": "^2.3.6",
@@ -25,8 +27,10 @@
     "prettier": "^3.2.5",
     "react": "^18",
     "react-dom": "^18",
+    "react-hook-form": "^7.51.3",
     "sass": "^1.72.0",
     "swr": "^2.2.5",
+    "valibot": "^0.30.0",
     "zod": "^3.22.4"
   },
   "devDependencies": {
