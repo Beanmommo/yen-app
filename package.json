@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@hookform/resolvers": "^3.3.4",
     "@nextui-org/button": "^2.0.31",
     "@nextui-org/divider": "^2.0.27",
     "@nextui-org/dropdown": "^2.1.23",
@@ -19,7 +20,6 @@
     "@nextui-org/system": "^2.1.2",
     "@nextui-org/table": "^2.0.33",
     "@nextui-org/theme": "^2.2.3",
-    "@preact/signals-react": "^2.0.1",
     "clsx": "^2.1.0",
     "firebase": "^10.10.0",
     "framer-motion": "^11.1.7",
@@ -27,6 +27,7 @@
     "prettier": "^3.2.5",
     "react": "^18",
     "react-dom": "^18",
+    "react-hook-form": "^7.51.3",
     "sass": "^1.72.0",
     "swr": "^2.2.5",
     "valibot": "^0.30.0",
