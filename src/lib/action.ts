@@ -1,9 +1,8 @@
 import { AddHotelForm } from "@/ui/hotel/AddFormSection";
 import { Hotel } from "./definitions";
-
 import useSWR from "swr";
 
-const fetcher = (url: string) => fetch(url).then((res) => res.json());
+const fetcher = (url: string) => fetch(url).then((res) => res.json()); // client-side fetch
 
 export async function postHotel(hotelFormData: AddHotelForm) {
   const data: Hotel = {
@@ -34,6 +33,7 @@ export async function getHotel() {
   return res.json();
 }
 
+// client side hotel-dashboard
 export function useHotel() {
   const { data, error, isLoading } = useSWR(
     "http://localhost:3000/api/getHotel",

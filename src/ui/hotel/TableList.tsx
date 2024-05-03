@@ -43,7 +43,7 @@ export default function TableList() {
           return <p>{cellValue}</p>;
         case "id": //Action
           return (
-            <div className=" gap-4">
+            <div className=" flex flex-row gap-4">
               <Link
                 href={`${NAV_ROUTE.HOTEL.EDIT}${cellValue}`}
                 color="primary"
