@@ -5,6 +5,8 @@ import {
   NavbarBrand,
   NavbarContent,
   NavbarItem,
+  NavbarMenu,
+  NavbarMenuItem,
   NavbarMenuToggle,
 } from "@nextui-org/navbar";
 
@@ -62,10 +64,46 @@ export default function AdminNavBar() {
       link: NAV_ROUTE.SETTING.HOME,
     },
   ];
+
+  const menuNavigationData = [
+    {
+      label: "Home",
+      link: NAV_ROUTE.DASHBOARD,
+    },
+    {
+      label: "Hotel",
+      link: NAV_ROUTE.HOTEL.HOME,
+    },
+    {
+      label: "Room Promo",
+      link: NAV_ROUTE.PROMO.HOME,
+    },
+    {
+      label: "Banner",
+      link: NAV_ROUTE.BANNER.HOME,
+    },
+    {
+      label: "Booking",
+      link: NAV_ROUTE.BOOKING.HOME,
+    },
+    {
+      label: "Invoice",
+      link: NAV_ROUTE.INVOICE.HOME,
+    },
+    {
+      label: "Report",
+      link: NAV_ROUTE.REPORT.HOME,
+    },
+    {
+      label: "Setting",
+      link: NAV_ROUTE.SETTING.HOME,
+    },
+  ];
   return (
     <div>
       <Navbar
         onMenuOpenChange={setIsMenuOpen}
+        isMenuOpen={isMenuOpen}
         shouldHideOnScroll
         maxWidth={"2xl"}
       >
@@ -95,6 +133,21 @@ export default function AdminNavBar() {
             </Button>
           </NavbarItem>
         </NavbarContent>
+
+        <NavbarMenu>
+          {menuNavigationData.map((navigation) => (
+            <NavbarMenuItem key={navigation.label}>
+              <Link
+                className=" w-full"
+                color="foreground"
+                href={navigation.link}
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+              >
+                {navigation.label}
+              </Link>
+            </NavbarMenuItem>
+          ))}
+        </NavbarMenu>
       </Navbar>
     </div>
   );
