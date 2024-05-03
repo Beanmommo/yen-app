@@ -11,6 +11,7 @@ export const NAV_ROUTE = {
   HOTEL: {
     HOME: `${ADMIN_ROOT}/hotel-dashboard`,
     ADD: `${ADMIN_ROOT}/hotel-add`,
+    EDIT: `${ADMIN_ROOT}/hotel/`,
   },
   INVOICE: {
     HOME: `${ADMIN_ROOT}/invoice-home`,

@@ -1,7 +1,9 @@
 "use client";
+import { NAV_ROUTE } from "@/app/admin/const";
 import { useHotel } from "@/lib/action";
 import { Hotel } from "@/lib/definitions";
 import { dataToTableData, dictArrToArr } from "@/lib/utils";
+import { Link, LinkIcon } from "@nextui-org/link";
 import {
   Table,
   TableBody,
@@ -40,7 +42,17 @@ export default function TableList() {
         case "hotel_address":
           return <p>{cellValue}</p>;
         case "id": //Action
-          return <p className=" bg-red-500">{cellValue}</p>;
+          return (
+            <div className=" gap-4">
+              <Link
+                href={`${NAV_ROUTE.HOTEL.EDIT}${cellValue}`}
+                color="primary"
+              >
+                Edit
+              </Link>
+              <Link color="danger">Delete</Link>
+            </div>
+          );
         default:
           return <p>{cellValue}</p>;
       }
