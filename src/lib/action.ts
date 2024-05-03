@@ -3,6 +3,7 @@ import { Hotel } from "./definitions";
 
 import useSWR from "swr";
 
+const ROOT_URL = process.env.NEXT_PUBLIC_URL;
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 export async function postHotel(hotelFormData: AddHotelForm) {
@@ -36,7 +37,7 @@ export async function getHotel() {
 
 export function useHotel() {
   const { data, error, isLoading } = useSWR(
-    "http://localhost:3000/api/getHotel",
+    ROOT_URL + "/api/getHotel",
     fetcher,
   );
 
