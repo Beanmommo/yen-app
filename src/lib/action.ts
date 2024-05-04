@@ -2,7 +2,11 @@ import { AddHotelForm } from "@/ui/hotel/AddFormSection";
 import { Hotel } from "./definitions";
 import useSWR from "swr";
 
-const fetcher = (url: string) => fetch(url).then((res) => res.json()); // client-side fetch
+import { API_ROUTE } from "@/app/api/const";
+import { addQueryToUrl } from "./utils";
+
+const fetcher = (url: string, body?: any) =>
+  fetch(url, body).then((res) => res.json()); // client-side fetch
 
 export async function postHotel(hotelFormData: AddHotelForm) {
   const data: Hotel = {
@@ -15,7 +19,7 @@ export async function postHotel(hotelFormData: AddHotelForm) {
   };
 
   try {
-    const res = await fetch("/api/addHotel", {
+    const res = await fetch(API_ROUTE.HOTEL, {
       method: "POST",
       body: JSON.stringify(data),
     });
@@ -23,7 +27,7 @@ export async function postHotel(hotelFormData: AddHotelForm) {
 }
 
 export async function getHotel() {
-  const res = await fetch(process.env.LOCAL_URL + "/api/getHotel", {
+  const res = await fetch(API_ROUTE.HOTEL, {
     method: "GET",
   });
 
@@ -35,10 +39,23 @@ export async function getHotel() {
 
 // client side hotel-dashboard
 export function useHotel() {
-  const { data, error, isLoading } = useSWR(
-    "http://localhost:3000/api/getHotel",
-    fetcher,
-  );
-
+  const { data, error, isLoading } = useSWR(API_ROUTE.HOTEL, fetcher);
   return [data, error, isLoading];
 }
+
+export function useHotelById(id: string) {
+  const fetchUrl = addQueryToUrl(API_ROUTE.HOTEL, "id", id);
+  const { data, error, isLoading } = useSWR(fetchUrl, fetcher);
+  return [data, error, isLoading];
+}
+
+// client side hotel/[id]
+// export function useHotelById(id: string) {
+//   const { data, error, isLoading } = useSWR(
+//     "http://localhost:3000/api/getHotelbyId",
+//     {},
+//     fetcher,
+//   );
+
+//   return [data, error, isLoading];
+// }

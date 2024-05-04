@@ -26,3 +26,8 @@ export function dataToTableData(
   }
   return tableData;
 }
+
+//adding query to url string
+export function addQueryToUrl(url: string, key: string, value: string) {
+  return `${url}?${key}=${value}`;
+}

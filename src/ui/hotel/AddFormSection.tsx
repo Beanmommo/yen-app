@@ -8,8 +8,8 @@ import { valibotResolver } from "@hookform/resolvers/valibot";
 import * as v from "valibot";
 
 import { postHotel } from "@/lib/action";
-import { revalidatePath } from "next/cache";
-import { redirect, useRouter } from "next/navigation";
+
+import { useRouter } from "next/navigation";
 
 export type AddHotelForm = {
   hotel_name: string;
