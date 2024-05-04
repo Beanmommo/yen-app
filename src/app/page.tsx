@@ -11,6 +11,9 @@ export default function Page() {
       <Link isBlock showAnchorIcon href="/user">
         User
       </Link>
+      <ul>
+        <li>Vercel Env: {process.env.NEXT_PUBLIC_SITE_URL}</li>
+      </ul>
     </div>
   );
 }

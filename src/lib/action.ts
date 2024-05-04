@@ -25,7 +25,7 @@ export async function postHotel(hotelFormData: AddHotelForm) {
 }
 
 export async function getHotel() {
-  const res = await fetch(process.env.LOCAL_URL + "/api/getHotel", {
+  const res = await fetch(ROOT_URL + "/api/getHotel", {
     method: "GET",
   });
 
