@@ -5,24 +5,9 @@ import { Input } from "@nextui-org/input";
 import { Link } from "@nextui-org/link";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { valibotResolver } from "@hookform/resolvers/valibot";
-import * as v from "valibot";
-
 import { postHotel } from "@/lib/action";
-
 import { useRouter } from "next/navigation";
-
-export type AddHotelForm = {
-  hotel_name: string;
-  hotel_address: string;
-};
-const AddHotelSchema = v.object({
-  hotel_name: v.string("Hotel name must be a string", [
-    v.minLength(5, "Hotel name must have 5 characters or more"),
-  ]),
-  hotel_address: v.string("Hotel address must be a string", [
-    v.minLength(5, "Hotel address must have 5 characters or more"),
-  ]),
-});
+import { AddHotelForm, EditHotelSchema } from "./schema";
 
 export default function AddFormSection() {
   const {
@@ -31,7 +16,7 @@ export default function AddFormSection() {
     handleSubmit,
   } = useForm<AddHotelForm>({
     mode: "onBlur",
-    resolver: valibotResolver(AddHotelSchema),
+    resolver: valibotResolver(EditHotelSchema),
   });
   const router = useRouter();
   const onSubmit: SubmitHandler<AddHotelForm> = async (data) => {

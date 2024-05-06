@@ -1,9 +1,9 @@
-import { AddHotelForm } from "@/ui/hotel/AddFormSection";
 import { Hotel } from "./definitions";
 import useSWR from "swr";
 
 import { API_ROUTE } from "@/app/api/const";
 import { addQueryToUrl } from "./utils";
+import { AddHotelForm } from "@/ui/hotel/schema";
 
 const fetcher = (url: string, body?: any) =>
   fetch(url, body).then((res) => res.json()); // client-side fetch

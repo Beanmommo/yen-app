@@ -1,5 +1,7 @@
 "use client";
 import { useHotelById } from "@/lib/action";
+import EditFormSection from "@/ui/hotel/EditFormSection";
+import ViewHotel from "@/ui/hotel/ViewHotel";
 
 export default function Page({ params }: { params: { id: string } }) {
   const [data, error, isLoading] = useHotelById(params.id);
@@ -13,9 +15,8 @@ export default function Page({ params }: { params: { id: string } }) {
   }
   return (
     <div>
-      <h1>Hotel view edit page: {params.id}</h1>
-      <p>{data.hotel_name}</p>
-      <p>{data.hotel_address}</p>
+      <ViewHotel hotelData={data} />
+      <EditFormSection hotelData={data} />
     </div>
   );
 }
