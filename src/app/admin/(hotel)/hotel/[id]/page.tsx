@@ -16,7 +16,6 @@ export default function Page({ params }: { params: { id: string } }) {
   return (
     <div>
       <ViewHotel hotelData={data} />
-      <EditFormSection hotelData={data} />
     </div>
   );
 }

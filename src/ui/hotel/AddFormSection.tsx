@@ -8,6 +8,7 @@ import { valibotResolver } from "@hookform/resolvers/valibot";
 import { postHotel } from "@/lib/action";
 import { useRouter } from "next/navigation";
 import { AddHotelForm, EditHotelSchema } from "./schema";
+import PinLocation from "../PinLocation";
 
 export default function AddFormSection() {
   const {
@@ -43,7 +44,7 @@ export default function AddFormSection() {
         isInvalid={errors.hotel_address ? true : false}
         errorMessage={errors.hotel_address?.message}
       />
-      <h5 className="text-primary cursor-pointer">Pin Location in Map</h5>
+      <PinLocation />
       <div className="grid gap-4 grid-cols-2 max-w-60 mt-4">
         <Button
           as={Link}
