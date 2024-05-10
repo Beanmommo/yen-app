@@ -13,6 +13,7 @@ import AdminNavItem, { NavigationData } from "./AdminNavItem";
 import { Link } from "@nextui-org/link";
 import { Button } from "@nextui-org/button";
 import { NAV_ROUTE } from "@/app/admin/const";
+import { Avatar } from "@nextui-org/avatar";
 
 export default function AdminNavBar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -87,12 +88,7 @@ export default function AdminNavBar() {
 
         <NavbarContent justify="end">
           <NavbarItem className="hidden lg:flex">
-            <Link href="#">Login</Link>
-          </NavbarItem>
-          <NavbarItem>
-            <Button as={Link} color="primary" href="#" variant="flat">
-              Sign Up
-            </Button>
+            <Avatar name="U" />
           </NavbarItem>
         </NavbarContent>
       </Navbar>

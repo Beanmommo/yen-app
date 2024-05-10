@@ -16,6 +16,7 @@ export default function EditFormSection({ hotelData }: { hotelData: Hotel }) {
   return (
     <div>
       <form onSubmit={handleSubmit(onSubmit)}>
+        {/* bread crumb */}
         <div className=" text-sm">HOTEL LIST {">"} HOTEL SANTIOK</div>
         <InputBorder>
           <Textarea
