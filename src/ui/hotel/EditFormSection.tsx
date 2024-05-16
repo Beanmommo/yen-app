@@ -11,7 +11,7 @@ export default function EditFormSection({ hotelData }: { hotelData: Hotel }) {
     resolver: valibotResolver(EditHotelSchema),
   });
   const onSubmit: SubmitHandler<EditHotelForm> = async (data) => {
-    console.log("submitting");
+    console.log("submitting data");
   };
   return (
     <div>
